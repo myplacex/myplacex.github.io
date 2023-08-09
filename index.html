@@ -646,11 +646,24 @@
   <script src="./js/bootstrap.min.js"></script>
   <script src="./js/jquery.countdown.min.js"></script>
   <script>
-   $(document).ready(function () {
-       $('.countdown-text').countdown('2023/08/16', function(event) {
-           $(this).html(event.strftime('%D days %H:%M:%S'));
-       });
-   });
+     function updateCountdown() {
+        var now = new Date().getTime();
+        var targetDate = new Date(now + 7 * 24 * 60 * 60 * 1000); // 7 days from now
+
+        var days = Math.floor((targetDate - now) / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(((targetDate - now) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor(((targetDate - now) % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor(((targetDate - now) % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML =
+            "<div>" + days + "</div><span>d</span>" +
+            "<div>" + hours + "</div><span>h</span>" +
+            "<div>" + minutes + "</div><span>m</span>" +
+            "<div>" + seconds + "</div><span>s</span>";
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   
   <script src="./js/jquery.knob.min.js"></script>
   <script src="./js/jquery.ba-throttle-debounce.min.js"></script>
