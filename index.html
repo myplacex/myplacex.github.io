@@ -646,6 +646,7 @@
   <script src="./js/bootstrap.min.js"></script>
   <script src="./js/jquery.countdown.min.js"></script>
   <script>
+    $(document).ready(function () {
      function updateCountdown() {
         var now = new Date().getTime();
         var targetDate = new Date(now + 7 * 24 * 60 * 60 * 1000); // 7 days from now
