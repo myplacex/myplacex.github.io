@@ -646,17 +646,11 @@
   <script src="./js/bootstrap.min.js"></script>
   <script src="./js/jquery.countdown.min.js"></script>
   <script>
-    $(document).ready(function () {
-        var sevenDaysFromNow = new Date().getTime() + (7 * 24 * 60 * 60 * 1000);
-  
-        $('.countdown-text').countdown({
-            finalDate: sevenDaysFromNow,
-            format: 'dHMS', // Format to show days, hours, minutes, and seconds
-            onFinish: function () {
-                $('.countdown-text').html("Countdown Finished"); // Customize the message after countdown
-            }
-        });
-    });
+   $(document).ready(function () {
+       $('.countdown-text').countdown('2023/08/16', function(event) {
+           $(this).html(event.strftime('%D days %H:%M:%S'));
+       });
+   });
   
   <script src="./js/jquery.knob.min.js"></script>
   <script src="./js/jquery.ba-throttle-debounce.min.js"></script>
